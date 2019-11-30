@@ -13,7 +13,7 @@ BUILDTIME=$(shell date -u +%Y-%m-%d.%H:%M:%S)
 BUMP_SEMVER_PATCH=$(shell git pull --tags >/dev/null && git tag -l | grep -v "-" | tail -1 | awk -F. '{print $$1"."$$2"."$$3+1}')
 SHA_SHORT=$(shell git rev-parse --short HEAD)
 SEMVER=$(BUMP_SEMVER_PATCH)-$(SHA_SHORT)
-CLI_PATH=./cmd/hcunit
+CLI_PATH=./cmd/$(BINARY_NAME)
 
 all: test build
 build: build-darwin build-win build-linux 
